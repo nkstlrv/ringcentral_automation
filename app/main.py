@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import json
+from utils import prepare_json_for_production
 
 load_dotenv()
 
@@ -23,8 +24,7 @@ def get_calls_list():
 
     response = requests.get(url=calls_list_url, headers=headers)
 
-    data = response.json()
-
+    data = prepare_json_for_production(input_data=response.json())
     print(data)
 
 

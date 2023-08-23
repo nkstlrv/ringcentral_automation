@@ -1,0 +1,67 @@
+[
+    {
+        "ringcentral_link": "https://app.ringcentral.com/phone/recent/all/B2kUYdu6wPg4jUA",
+        "call_start_time": "2023-08-22T21:52:38.614Z",
+        "call_duration_time_seconds": 135,
+        "call_type": "Voice",
+        "call_direction": "Inbound",
+        "call_action": "Phone Call",
+        "call_result": "Accepted",
+        "called_to": "302905043",
+        "called_from": "+16472157196",
+        "recording_link": "https://app.ringcentral.com/phone/recordings/2167092738043",
+        "call_summary": "The call connected to and was accepted by this number."
+    },
+    {
+        "ringcentral_link": "https://app.ringcentral.com/phone/recent/all/B2kFU_8kEko-jUA",
+        "call_start_time": "2023-08-22T21:38:50.328Z",
+        "call_duration_time_seconds": 35,
+        "call_type": "Voice",
+        "call_direction": "Outbound",
+        "call_action": "VoIP Call",
+        "call_result": "Call connected",
+        "called_to": null,
+        "called_from": "+15873320613",
+        "recording_link": "https://app.ringcentral.com/phone/recordings/2167091521043",
+        "call_summary": "No Description"
+    },
+    {
+        "ringcentral_link": "https://app.ringcentral.com/phone/recent/all/B2kCBXObQ2dqjUA",
+        "call_start_time": "2023-08-22T21:35:42.896Z",
+        "call_duration_time_seconds": 69,
+        "call_type": "Voice",
+        "call_direction": "Outbound",
+        "call_action": "VoIP Call",
+        "call_result": "Call connected",
+        "called_to": null,
+        "called_from": "+15873320613",
+        "recording_link": "https://app.ringcentral.com/phone/recordings/2167091123043",
+        "call_summary": "No Description"
+    },
+    {
+        "ringcentral_link": "https://app.ringcentral.com/phone/recent/all/B2j6FyGYZNfEjUA",
+        "call_start_time": "2023-08-22T21:28:29.181Z",
+        "call_duration_time_seconds": 210,
+        "call_type": "Voice",
+        "call_direction": "Outbound",
+        "call_action": "VoIP Call",
+        "call_result": "Call connected",
+        "called_to": null,
+        "called_from": "+15873320613",
+        "recording_link": "https://app.ringcentral.com/phone/recordings/2167090475043",
+        "call_summary": "No Description"
+    },
+    {
+        "ringcentral_link": "https://app.ringcentral.com/phone/recent/all/B2jzXOXT52XKjUA",
+        "call_start_time": "2023-08-22T21:22:30.635Z",
+        "call_duration_time_seconds": 191,
+        "call_type": "Voice",
+        "call_direction": "Outbound",
+        "call_action": "VoIP Call",
+        "call_result": "Call connected",
+        "called_to": null,
+        "called_from": "+15873320613",
+        "recording_link": "https://app.ringcentral.com/phone/recordings/2167089963043",
+        "call_summary": "No Description"
+    }
+]
