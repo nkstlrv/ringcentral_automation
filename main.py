@@ -6,17 +6,16 @@ load_dotenv()
 
 
 # RingCentral API Credentials 
-SERVER_URL = os.getenv("SERVER_URL")
-
+SERVER_URL = "https://platform.devtest.ringcentral.com"
 ACCOUNT_ID = os.getenv("ACCOUNT_ID")
 EXTENSION_ID = os.getenv("EXTENSION_ID")
 CLIENT_ID = os.getenv("CLIENT_ID")
-
 USERNAME = os.getenv("USERNAME")
-PASSWORD = os.gettenv("PASSWORD")
+PASSWORD = os.getenv("PASSWORD")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-
+JWT_TOKEN = os.getenv("JWT_TOKEN")
 EXTENSION = os.getenv("EXTENSION")
+
 
 
 queryParams = {
@@ -24,11 +23,14 @@ queryParams = {
     #'perPage': 000
 }
 
-rcsdk = SDK(os.environ[CLIENT_ID], os.environ[CLIENT_SECRET], os.environ[SERVER_URL])
+# setting up RingCentral SDK
+rcsdk = SDK(CLIENT_ID, CLIENT_SECRET, SERVER_URL)
 platform = rcsdk.platform()
 
-platform.login(os.environ[USERNAME], os.environ[EXTENSION], os.environ[PASSWORD])
+platform.login(USERNAME, EXTENSION, PASSWORD)
 
+
+# Get List of Calls
 r = platform.get(f'/restapi/v1.0/account/{ACCOUNT_ID}/call-log', queryParams)
 
 
