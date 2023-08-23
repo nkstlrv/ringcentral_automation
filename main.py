@@ -1,37 +1,31 @@
 import os
 from dotenv import load_dotenv
-from ringcentral import SDK
+import requests
 
 load_dotenv()
 
 
-# RingCentral API Credentials 
-SERVER_URL = "https://platform.devtest.ringcentral.com"
+# RingCentral API Credentials
+
 ACCOUNT_ID = os.getenv("ACCOUNT_ID")
 EXTENSION_ID = os.getenv("EXTENSION_ID")
-CLIENT_ID = os.getenv("CLIENT_ID")
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-JWT_TOKEN = os.getenv("JWT_TOKEN")
-EXTENSION = os.getenv("EXTENSION")
+# CLIENT_ID = os.getenv("CLIENT_ID")
+# USERNAME = os.getenv("USERNAME")
+# PASSWORD = os.getenv("PASSWORD")
+# CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+TOKEN = os.getenv("TOKEN")
+# EXTENSION = os.getenv("EXTENSION")
 
+BASE_URl = f"https://platform.ringcentral.com/restapi/v1.0/account/{ACCOUNT_ID}/extension/{EXTENSION_ID}/call-log"
 
-
-queryParams = {
-    #'page': 000,
-    #'perPage': 000
+headers = {
+    "accept": "application/json",
+    "authorization": f"Bearer {TOKEN}",
+    "content-type": "application/json",
 }
 
-# setting up RingCentral SDK
-rcsdk = SDK(CLIENT_ID, CLIENT_SECRET, SERVER_URL)
-platform = rcsdk.platform()
-
-platform.login(USERNAME, EXTENSION, PASSWORD)
+response = requests.get(url=BASE_URl, headers=headers)
 
 
-# Get List of Calls
-r = platform.get(f'/restapi/v1.0/account/{ACCOUNT_ID}/call-log', queryParams)
-
-
-print(r)
+data = response
+print(data.text)
