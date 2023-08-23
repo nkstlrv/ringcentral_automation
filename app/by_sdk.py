@@ -1,3 +1,33 @@
+"""
+
+
+
+
+
+
+DOES 
+            NOT 
+                            WORK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
+
 import os
 from dotenv import load_dotenv
 from ringcentral import SDK
@@ -28,6 +58,7 @@ rcsdk = SDK(CLIENT_ID, CLIENT_SECRET, SERVER_URL)
 platform = rcsdk.platform()
 
 platform.login(USERNAME, EXTENSION, PASSWORD)
+platform.auth()
 
 
 # Get List of Calls
