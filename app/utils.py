@@ -17,16 +17,15 @@ def prepare_json_for_production(input_data: dict):
                     "call_direction": call["direction"],
                     "call_action": call["action"],
                     "call_result": call["result"],
-                    "called_to": call["to"].get("extensionId"),
-                    "called_from": call["from"]["phoneNumber"],  
+                    "called_to": call["to"], # potentially empty
+                    "called_from": call["from"],  
                     "recording_link": f"https://app.ringcentral.com/phone/recordings/{call['recording']['id']}",
-                    "call_summary": call.get("reasonDescription", "No Description"),
+                    "call_summary": call.get("reasonDescription"), # potentially empty
                 }
             )
 
         return result
-    else:
-        return False
+    return False
 
 if __name__ == "__main__":
 
