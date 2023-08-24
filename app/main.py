@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import logging
-from utils import format_calls_list_response_json
+from utils import format_calls_list_response_json, format_sms_list_response_json
 
 load_dotenv()
 
@@ -68,10 +68,11 @@ def get_sms_list() -> dict | bool:
         logging.error(ex)
         return False
 
-    data: dict = response.json()
+    data: dict = format_sms_list_response_json(response_sms_data=response.json())
     return data
 
 
 if __name__ == "__main__":
     print(get_calls_list())
+    print(get_sms_list())
     print(get_recording("2167092738043"))
