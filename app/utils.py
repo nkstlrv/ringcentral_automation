@@ -18,6 +18,7 @@ def format_calls_list_response_json(response_calls_data: dict):
         for call in records:
             result.append(
                 {
+                    "call_id": call.get("id"),
                     "ringcentral_link": f"https://app.ringcentral.com/phone/recent/all/{call.get('id')}",
                     "start_time": call.get("startTime"),
                     "duration_time_seconds": call.get("duration"),
