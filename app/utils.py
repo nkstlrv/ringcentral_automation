@@ -1,5 +1,5 @@
 import json
-from data.data_dict import data_dict
+from data.dev_calls_data_dict import data_dict
 
 
 def format_response_json(response_data: dict):
@@ -9,7 +9,7 @@ def format_response_json(response_data: dict):
     extracted from raw JSON that is being returned by RingCentral
 
     """
-    records: list[dict] = input_data.get("records")
+    records: list[dict] = response_data.get("records")
 
     if records:
         result = list()
@@ -39,5 +39,5 @@ def format_response_json(response_data: dict):
 if __name__ == "__main__":
     prepared_data = format_response_json(data_dict)
 
-    with open("data/production_data.json", "w") as f:
+    with open("data/production_calls_list.json", "w") as f:
         json.dump(prepared_data, f)
