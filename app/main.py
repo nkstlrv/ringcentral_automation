@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import logging
-from utils import format_response_json
+from utils import format_calls_list_response_json
 
 load_dotenv()
 
@@ -35,7 +35,7 @@ def get_calls_list() -> list[dict] | bool:
         return False
 
     # formatting data to return only necessary information about calls
-    data: list[dict] = format_response_json(response_data=response.json())
+    data: list[dict] = format_calls_list_response_json(response_calls_data=response.json())
     return data
 
 

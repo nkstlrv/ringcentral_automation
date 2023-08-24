@@ -1,0 +1,62 @@
+[
+    {
+        "sms_id": 402406986008,
+        "to": [
+            {
+                "name": "Jane Smith"
+            }
+        ],
+        "from": {
+            "phoneNumber": "+18888984591",
+            "name": "RingCentral"
+        },
+        "type": "VoiceMail",
+        "send_time": "2018-09-18T09:24:04.000Z",
+        "last_modified_time": "2018-09-18T09:24:04.102Z",
+        "read_status": "Unread",
+        "priority": "Normal",
+        "direction": "Inbound",
+        "subject": "Welcome to RingCentral!",
+        "status": "Received",
+        "availability": "Alive",
+        "attachments": [
+            {
+                "id": 402406986008,
+                "uri": "https://platform.ringcentral.com/restapi/v1.0/account/401928394008/extension/401928394008/message-store/402406986008/content/402406986008",
+                "type": "AudioRecording",
+                "contentType": "audio/x-wav",
+                "vmDuration": 42
+            }
+        ]
+    },
+    {
+        "sms_id": 402406984008,
+        "to": [
+            {
+                "name": "Jane Smith"
+            }
+        ],
+        "from": {
+            "phoneNumber": "+18442058517",
+            "name": "RingCentral"
+        },
+        "type": "VoiceMail",
+        "send_time": "2018-09-18T09:24:03.000Z",
+        "last_modified_time": "2018-09-18T09:24:03.531Z",
+        "read_status": "Unread",
+        "priority": "Normal",
+        "direction": "Inbound",
+        "subject": null,
+        "status": "Received",
+        "availability": "Alive",
+        "attachments": [
+            {
+                "id": 402406984008,
+                "uri": "https://platform.ringcentral.com/restapi/v1.0/account/401928394008/extension/401928394008/message-store/402406984008/content/402406984008",
+                "type": "AudioRecording",
+                "contentType": "audio/x-wav",
+                "vmDuration": 25
+            }
+        ]
+    }
+]
