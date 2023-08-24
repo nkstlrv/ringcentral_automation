@@ -1,5 +1,5 @@
 import json
-from data.dev_calls_data_dict import data_dict
+from data.dev_calls_data_dict import calls_dict
 
 
 def format_response_json(response_data: dict):
@@ -37,7 +37,7 @@ def format_response_json(response_data: dict):
 
 
 if __name__ == "__main__":
-    prepared_data = format_response_json(data_dict)
+    prepared_data = format_response_json(calls_dict)
 
     with open("data/production_calls_list.json", "w") as f:
         json.dump(prepared_data, f)

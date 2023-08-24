@@ -1,4 +1,4 @@
-data_dict = {
+calls_dict = {
     "uri": "https://platform.ringcentral.com/restapi/v1.0/account/302905043/extension/302905043/call-log?view=Simple&showBlocked=true&withRecording=false&dateFrom=2023-08-22T14:22:00.000Z&page=1&perPage=100",
     "records": [
         {
