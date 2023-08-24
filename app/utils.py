@@ -41,8 +41,8 @@ def format_calls_list_response_json(response_calls_data: dict):
 def format_sms_list_response_json(response_sms_data: dict):
     """
 
-        returns only necessary SMS information,
-        extracted from raw JSON that is being returned by RingCentral
+    returns only necessary SMS information,
+    extracted from raw JSON that is being returned by RingCentral
 
     """
     records: list[dict] = response_sms_data.get("records")
@@ -65,9 +65,7 @@ def format_sms_list_response_json(response_sms_data: dict):
                     "subject": sms.get("subject"),
                     "status": sms.get("messageStatus"),
                     "availability": sms.get("availability"),
-                    "attachments": sms.get("attachments")
-
-
+                    "attachments": sms.get("attachments"),
                 }
             )
 

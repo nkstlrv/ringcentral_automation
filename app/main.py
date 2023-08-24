@@ -35,11 +35,13 @@ def get_calls_list() -> list[dict] | bool:
         return False
 
     # formatting data to return only necessary information about calls
-    data: list[dict] = format_calls_list_response_json(response_calls_data=response.json())
+    data: list[dict] = format_calls_list_response_json(
+        response_calls_data=response.json()
+    )
     return data
 
 
-def get_recording(recording_id: str) -> dict | bool:
+def get_recording(recording_id: str) -> list | bool:
     recording_base_url = f"https://platform.ringcentral.com/restapi/v1.0/account/{ACCOUNT_ID}/recording/{recording_id}"
 
     response = requests.get(url=recording_base_url, headers=AUTH_HEADERS)
@@ -54,7 +56,7 @@ def get_recording(recording_id: str) -> dict | bool:
     return data
 
 
-def get_sms_list() -> dict | bool:
+def get_sms_list() -> list[dict] | bool:
     sms_base_url = (
         f"https://platform.ringcentral.com/restapi/v1.0/"
         f"account/{ACCOUNT_ID}/extension/{EXTENSION_ID}/message-store"
@@ -68,7 +70,7 @@ def get_sms_list() -> dict | bool:
         logging.error(ex)
         return False
 
-    data: dict = format_sms_list_response_json(response_sms_data=response.json())
+    data: list[dict] = format_sms_list_response_json(response_sms_data=response.json())
     return data
 
 
