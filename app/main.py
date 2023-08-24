@@ -60,3 +60,4 @@ def get_recording(recording_id: str):
 
 if __name__ == "__main__":
     print(get_calls_list())
+    print(get_recording("2167092738043"))
