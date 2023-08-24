@@ -6,25 +6,27 @@ from utils import format_response_json
 
 load_dotenv()
 
-logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 
 # RingCentral API Credentials
 ACCOUNT_ID = os.getenv("ACCOUNT_ID")
 EXTENSION_ID = os.getenv("EXTENSION_ID")
 TOKEN = os.getenv("TOKEN")
 
+AUTH_HEADERS = {
+    "accept": "application/json",
+    "authorization": f"Bearer {TOKEN}",
+    "content-type": "application/json",
+}
 
-def get_calls_list():
-    calls_list_url = (f"https://platform.ringcentral.com/restapi/v1.0/account/"
-                      f"{ACCOUNT_ID}/extension/{EXTENSION_ID}/call-log")
 
-    headers = {
-        "accept": "application/json",
-        "authorization": f"Bearer {TOKEN}",
-        "content-type": "application/json",
-    }
+def get_calls_list() -> list[dict] | bool:
+    calls_list_url = (
+        f"https://platform.ringcentral.com/restapi/v1.0/account/"
+        f"{ACCOUNT_ID}/extension/{EXTENSION_ID}/call-log"
+    )
 
-    response = requests.get(url=calls_list_url, headers=headers)
+    response = requests.get(url=calls_list_url, headers=AUTH_HEADERS)
 
     try:
         response.raise_for_status()  # checking whether request was successful
@@ -37,16 +39,28 @@ def get_calls_list():
     return data
 
 
-def get_recording(recording_id: str):
-    base_url = f"https://platform.devtest.ringcentral.com/restapi/v1.0/account/{ACCOUNT_ID}/recording/{recording_id}"
+def get_recording(recording_id: str) -> dict | bool:
+    recording_base_url = f"https://platform.ringcentral.com/restapi/v1.0/account/{ACCOUNT_ID}/recording/{recording_id}"
 
-    headers = {
-        "accept": "application/json",
-        "authorization": f"Bearer {TOKEN}",
-        "content-type": "application/json",
-    }
+    response = requests.get(url=recording_base_url, headers=AUTH_HEADERS)
 
-    response = requests.get(url=base_url, headers=headers)
+    try:
+        response.raise_for_status()  # checking whether request was successful
+    except requests.exceptions.HTTPError as ex:
+        logging.error(ex)
+        return False
+
+    data: dict = response.json()
+    return data
+
+
+def get_sms_list() -> dict | bool:
+    sms_base_url = (
+        f"https://platform.ringcentral.com/restapi/v1.0/"
+        f"account/{ACCOUNT_ID}/extension/{EXTENSION_ID}/message-store"
+    )
+
+    response = requests.get(url=sms_base_url, headers=AUTH_HEADERS)
 
     try:
         response.raise_for_status()  # checking whether request was successful

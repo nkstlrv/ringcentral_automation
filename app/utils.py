@@ -26,7 +26,6 @@ def format_response_json(response_data: dict):
                     "result": call.get("result"),
                     "to": call.get("to"),
                     "from": call.get("from"),
-
                     # potential exception may occur
                     "recording_link": f"https://app.ringcentral.com/phone/recordings/{call['recording']['id']}",
                     "summary": call.get("reasonDescription"),
