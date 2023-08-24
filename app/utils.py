@@ -1,5 +1,5 @@
 import json
-from data_dict import data_dict
+from data.data_dict import data_dict
 
 def prepare_json_for_production(input_data: dict):
     records: list[dict] = input_data.get("records")
@@ -31,6 +31,6 @@ if __name__ == "__main__":
 
     prepared_data = prepare_json_for_production(data_dict)
 
-    with open("production_data.json", "w") as f:
+    with open("data/production_data.json", "w") as f:
         json.dump(prepared_data, f)
     
