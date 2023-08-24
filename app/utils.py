@@ -1,36 +1,44 @@
 import json
 from data.data_dict import data_dict
 
-def prepare_json_for_production(input_data: dict):
+
+def format_response_json(response_data: dict):
+    """
+
+    returns only necessary information,
+    extracted from raw JSON that is being returned by RingCentral
+
+    """
     records: list[dict] = input_data.get("records")
 
     if records:
         result = list()
 
-        for call in records: 
+        for call in records:
             result.append(
                 {
-                    "ringcentral_link": f"https://app.ringcentral.com/phone/recent/all/{call['id']}",
-                    "call_start_time": call["startTime"],
-                    "call_duration_time_seconds": call["duration"],
-                    "call_type": call["type"],
-                    "call_direction": call["direction"],
-                    "call_action": call["action"],
-                    "call_result": call["result"],
-                    "called_to": call["to"], # potentially empty
-                    "called_from": call["from"],  
+                    "ringcentral_link": f"https://app.ringcentral.com/phone/recent/all/{call.get('id')}",
+                    "start_time": call.get("startTime"),
+                    "duration_time_seconds": call.get("duration"),
+                    "type": call.get("type"),
+                    "direction": call.get("direction"),
+                    "action": call.get("action"),
+                    "result": call.get("result"),
+                    "to": call.get("to"),
+                    "from": call.get("from"),
+
+                    # potential exception may occur
                     "recording_link": f"https://app.ringcentral.com/phone/recordings/{call['recording']['id']}",
-                    "call_summary": call.get("reasonDescription"), # potentially empty
+                    "summary": call.get("reasonDescription"),
                 }
             )
 
         return result
     return False
 
-if __name__ == "__main__":
 
-    prepared_data = prepare_json_for_production(data_dict)
+if __name__ == "__main__":
+    prepared_data = format_response_json(data_dict)
 
     with open("data/production_data.json", "w") as f:
         json.dump(prepared_data, f)
-    

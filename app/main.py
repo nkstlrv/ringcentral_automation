@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import json
-from utils import prepare_json_for_production
+from utils import format_response_json
 
 load_dotenv()
 
@@ -14,7 +14,8 @@ TOKEN = os.getenv("TOKEN")
 
 
 def get_calls_list():
-    calls_list_url = f"https://platform.ringcentral.com/restapi/v1.0/account/{ACCOUNT_ID}/extension/{EXTENSION_ID}/call-log"
+    calls_list_url = (f"https://platform.ringcentral.com/restapi/v1.0/account/"
+                      f"{ACCOUNT_ID}/extension/{EXTENSION_ID}/call-log")
 
     headers = {
         "accept": "application/json",
@@ -22,11 +23,12 @@ def get_calls_list():
         "content-type": "application/json",
     }
 
-    response = requests.get(url=calls_list_url, headers=headers)
+    response: dict = requests.get(url=calls_list_url, headers=headers).json()
 
-    data = prepare_json_for_production(input_data=response.json())
-    print(data)
+    # formatting data to return only necessary information about calls
+    data: list[dict] = format_response_json(response_data=response)
+    return data
 
 
 if __name__ == "__main__":
-    get_calls_list()
+    print(get_calls_list())
